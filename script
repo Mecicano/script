@@ -10,63 +10,17 @@ btns:Toggle("Urban" , false , function(c)
     getgenv().farm = c
 for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
     if v.Name == "Urban [Lv. 1750]" then
-        elseif v.Name == "Urban [Lv. 1750]" then
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Meci Hub",
-            Text = "co boss",
-            Duration = 5
-        })
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Meci Hub",
-        Text = "Chua co boss",
-        Duration = 5
-    })
-    end
-end
-
-for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-    if v.Name == "Urban [Lv. 1750]" then
         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
         v.HumanoidRootPart.Transparency = 0.5
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
         game:GetService'VirtualUser':CaptureController()
         game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
         elseif v.Name == "Urban [Lv. 1750]" then
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Meci Hub",
-            Text = "co boss",
-            Duration = 5
-        })
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Meci Hub",
-        Text = "Chua co boss",
-        Duration = 5
-    })
     end
 end
 end)
 btns:Toggle("diablo" , false , function(c)
     getgenv().farm = c
-    for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-    if v.Name == "Diablo [Lv. 1750]" then
-        elseif v.Name == "Diablo [Lv. 1750]" then
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Meci Hub",
-            Text = "co boss",
-            Duration = 5
-        })
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Meci Hub",
-        Text = "Chua co boss",
-        Duration = 5
-    })
-    end
-end
-
-
 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
     if v.Name == "Diablo [Lv. 1750]" then
         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
@@ -74,41 +28,11 @@ for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
         game:GetService'VirtualUser':CaptureController()
         game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-    elseif v.Name == "Diablo [Lv. 1750]" then
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Meci Hub",
-            Text = "co boss",
-            Duration = 5
-        })
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Meci Hub",
-        Text = "Chua co boss",
-        Duration = 5
-    })
-
     end
     end
 end)
 btns:Toggle("Deandre" , false , function(c)
     getgenv().farm = c
-        for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-    if v.Name == "Diablo [Lv. 1750]" then
-        elseif v.Name == "Deandre [Lv. 1750]" then
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Meci Hub",
-            Text = "co boss",
-            Duration = 5
-        })
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Meci Hub",
-        Text = "Chua co boss",
-        Duration = 5
-    })
-    end
-end
-
 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
     if v.Name == "Deandre [Lv. 1750]" then
         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
@@ -116,18 +40,6 @@ for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
         game:GetService'VirtualUser':CaptureController()
         game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-        elseif v.Name == "Deandre [Lv. 1750]" then
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Meci Hub",
-            Text = "co boss",
-            Duration = 5
-        })
-    else
-        game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Meci Hub",
-        Text = "Chua co boss",
-        Duration = 5
-    })
     end
 end
 end)
