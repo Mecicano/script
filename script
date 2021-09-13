@@ -19,7 +19,12 @@ getgenv().farm1 = false
 btns:Toggle("farm selected boss" , false , function(c)
     getgenv().farm1 = c
 end)
-btns:Dropdown("select boss", {"Urban [Lv. 1750]", "Diablo [Lv. 1750]","Deandre [Lv. 1750]"}, function(obama)
+local bosses = {
+    "Urban [Lv. 1750]",
+    "Diablo [Lv. 1750]",
+    "Deandre [Lv. 1750]"
+}
+btns:Dropdown("select boss", bosses, function(obama)
     getgenv().MobFarm = obama
 end)
 function mob()
@@ -35,7 +40,7 @@ end
 function cc1()
     local v = mob()
     repeat wait()
-        v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+        v.HumanoidRootPart.Size = Vector3.new(80,80,80)
         v.HumanoidRootPart.Transparency = 0.5
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =               
         v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
