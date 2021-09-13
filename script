@@ -66,7 +66,15 @@ while getgenv().farm do wait()
   cc3()
 end
 end)
-
+Tpmap:Button("Quest Elite", function()
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5492.6850585938, 313.79473876953, -2824.5180664063)
+    end)
+Tpmap:Button("Turle Island", function()
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12546.811523438, 337.19409179688, -7520.4526367188)
+    end) 
+Tpmap:Button("WaterFall", function()
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12546.811523438, 337.19409179688, -7520.4526367188)
+    end)     
 while getgenv().farm do
     wait()
 end
