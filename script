@@ -8,74 +8,48 @@ local btns = serv:Channel("Farm")
 local Tpmap = serv:Channel("TP")
 Tpmap:Button("Quest Elite", function()
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5492.6850585938, 313.79473876953, -2824.5180664063)
-    end)
+end)
 Tpmap:Button("Turle Island", function()
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12546.811523438, 337.19409179688, -7520.4526367188)
-    end) 
-Tpmap:Button("WaterFall", function()
+end) 
+    Tpmap:Button("WaterFall", function()
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12546.811523438, 337.19409179688, -7520.4526367188)
-    end) 
-
-btns:Toggle("Urban" , false , function(c)
-    getgenv().farm = c
+end) 
+getgenv().farm1 = false
+btns:Toggle("farm selected boss" , false , function(c)
+    getgenv().farm1 = c
+end)
+btns:Dropdown("select boss", {"Urban [Lv. 1750]", "Diablo [Lv. 1750]","Deandre [Lv. 1750]"}, function(obama)
+    getgenv().MobFarm = obama
+end)
+function mob()
+    if game.Workspace.Enemies:FindFirstChild(MobFarm) then
+        for i,v in pairs(workspace.Enemies:GetChildren()) do
+            if v.Name == MobFarm and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v:IsA("Model") and v.Humanoid.Health > 0 then
+                return v
+            end
+        end
+    end
+    return game.ReplicatedStorage:FindFirstChild(MobFarm)
+end
 function cc1()
-for i,v in pairs(game:GetService("ReplicatedStorage"):GetChildren()) do
-    if v.Name == "Urban [Lv. 1750]" then
-        repeat wait()
+    local v = mob()
+    repeat wait()
         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
         v.HumanoidRootPart.Transparency = 0.5
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =               
         v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
         game:GetService'VirtualUser':CaptureController()
         game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-        until v.Humanoid.Health == 0 
-    end
-end
+    until v.Humanoid.Health == 0 or farm1 == false
 end
 
-while getgenv().farm do wait()
-  cc1()
-end
-end)
-btns:Toggle("Diablo" , false , function(c)
-    getgenv().farm = c
-function cc2()
-for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-    if v.Name == "Diablo [Lv. 1750]" then
-        v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-        v.HumanoidRootPart.Transparency = 0.5
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =               
-        v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
-        game:GetService'VirtualUser':CaptureController()
-        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+spawn(function()
+    while wait() do
+        if farm1 then
+            pcall(function()
+                cc1()
+            end)
+        end
     end
-end
-end
-
-while getgenv().farm do wait()
-  cc2()
-end
 end)
-btns:Toggle("Deandre" , false , function(c)
-      getgenv().farm = c
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-11625.182617188, 639.263671875, -8907.7119140625)
-function cc3()
-for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-    if v.Name == "Deandre [Lv. 1750]" then
-        v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-        v.HumanoidRootPart.Transparency = 0.5
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =               
-        v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
-        game:GetService'VirtualUser':CaptureController()
-        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-    end
-end
-end
-
-while getgenv().farm do wait()
-  cc3()
-end
-end)
-while getgenv().farm do
-    wait()
-end
