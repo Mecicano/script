@@ -1,23 +1,4 @@
 
-local plr = game.Players.LocalPlayer
-local whitelist = false
-local function Check(a, b)
-  if a == b then
-      return true
-  else
-      return false
-  end
-end
-
-if Check(tostring("funny"), tostring(getgenv().Key)) or Check(tostring("Cut"), tostring(getgenv().Key)) or Check(tostring("lon"), tostring(getgenv().Key)) or Check(tostring("buoi"), tostring(getgenv().Key)) then
-    whitelist = true
-else
-    print("Auth fail")
-    plr:Kick(" Cac Cut deo co key")
-end
-
-repeat wait() until whitelist
-print("Auth success")
 
 if not _G.require then
 	_G.require = require
