@@ -1,60 +1,68 @@
-local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
-
-local win = DiscordLib:Window("hub farm boss nhu cc")
-
-local serv = win:Server("Preview", "")
-
-local btns = serv:Channel("Farm")
-local Tpmap = serv:Channel("TP")
-Tpmap:Button("Quest Elite", function()
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5492.6850585938, 313.79473876953, -2824.5180664063)
-end)
-Tpmap:Button("Turle Island", function()
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12546.811523438, 337.19409179688, -7520.4526367188)
-end) 
-    Tpmap:Button("WaterFall", function()
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-12546.811523438, 337.19409179688, -7520.4526367188)
-end) 
-getgenv().farm1 = false
-btns:Toggle("farm selected boss" , false , function(c)
-    getgenv().farm1 = c
-end)
-local bosses = {
-    "Urban [Lv. 1750]",
-    "Diablo [Lv. 1750]",
-    "Deandre [Lv. 1750]"
-}
-btns:Dropdown("select boss", bosses, function(obama)
-    getgenv().MobFarm = obama
-end)
-function mob()
-    if game.Workspace.Enemies:FindFirstChild(MobFarm) then
-        for i,v in pairs(workspace.Enemies:GetChildren()) do
-            if v.Name == MobFarm and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v:IsA("Model") and v.Humanoid.Health > 0 then
-                return v
+local plr = game.Players.LocalPlayer
+local data = plr.Data.Level.Value
+local kiet = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
+            function Click()
+                if kiet.activeController and kiet.activeController.anims and kiet.activeController.anims.basic then 
+kiet.activeController.increment = 2                   kiet.activeController.hitboxMagnitude=10000
+                    kiet.activeController.blades = {game.Players.LocalPlayer.Character.HumanoidRootPart}
+                    kiet.activeController:attack()
+                end
             end
+            game:GetService("RunService").Stepped:connect(
+            function()
+                Click()
+            end
+            )
+function tween(targetPos, targetCFrame)
+    local gay = (targetPos - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+    local Tween =
+        game:GetService("TweenService"):Create(
+        game.Players.LocalPlayer.Character.HumanoidRootPart,
+        TweenInfo.new(gay / 200, Enum.EasingStyle.Linear),
+        {CFrame = targetCFrame}
+    )
+    Tween:Play()
+    Tween.Completed:Wait()
+end
+local bandit = Vector3.new(-9481.5791, 142.130661, 5561.83301, -0.768473685, 1.4203831e-08, -0.639881372, -4.84984461e-08, 1, 8.04424261e-08, 0.639881372, 9.28511454e-08, -0.768473685)
+local bandit2 = CFrame.new(-9481.5791, 142.130661, 5561.83301, -0.768473685, 1.4203831e-08, -0.639881372, -4.84984461e-08, 1, 8.04424261e-08, 0.639881372, 9.28511454e-08, -0.768473685)
+function checklevel()
+    if data >= 2000 and data < 3000 then
+        tween(bandit, bandit2)
+local args = {
+    [1] = "StartQuest",
+    [2] = "HauntedQuest1",
+    [3] = 2
+}
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+
+    end
+end
+function attk()
+    local plr = game.Players.LocalPlayer
+    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+        if v.Name == "Living Zombie [Lv. 2000]" then
+            repeat
+                wait()
+                plr.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 20, 0)
+                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                v.HumanoidRootPart.Transparency = 0.5
+                plr.Character.Humanoid:ChangeState(11)
+                game:GetService "VirtualUser":CaptureController()
+                game:GetService "VirtualUser":Button1Down(Vector2.new(1280, 672))
+                wait()
+            until not getgenv().farm or v.Humanoid.Health <= 0
         end
     end
-    return game.ReplicatedStorage:FindFirstChild(MobFarm)
-end
-function cc1()
-    local v = mob()
-    repeat wait()
-        v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-        v.HumanoidRootPart.Transparency = 0.5
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =               
-        v.HumanoidRootPart.CFrame * CFrame.new(30, 30, 0)
-        game:GetService'VirtualUser':CaptureController()
-        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-    until v.Humanoid.Health == 0 or farm1 == false
 end
 
-spawn(function()
-    while wait() do
-        if farm1 then
-            pcall(function()
-                cc1()
-            end)
-        end
+getgenv().farm = true
+while farm == true do
+    wait()
+    if plr.PlayerGui.Main.Quest.Visible == false then
+        checklevel()
+    else
+        Click()
+        attk()
     end
-end)
+end
