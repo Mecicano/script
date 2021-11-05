@@ -56,4 +56,13 @@ function attk()
         end
     end
 end
-
+getgenv().farm = true --/change to false to turn off/--
+while farm == true do
+    wait()
+    if plr.PlayerGui.Main.Quest.Visible == false then
+        checklevel()
+    else
+        Click()
+        attk()
+    end
+end
