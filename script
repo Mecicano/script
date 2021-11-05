@@ -1,13 +1,4 @@
-getgenv().farm = true --/change to false to turn off/--
-while farm == true do
-    wait()
-    if plr.PlayerGui.Main.Quest.Visible == false then
-        checklevel()
-    else
-        Click()
-        attk()
-    end
-end
+
 local plr = game.Players.LocalPlayer
 local data = plr.Data.Level.Value
 local kiet = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework)
